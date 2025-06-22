@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aura Supporto</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #E30AF5, #F174FF);
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 100px auto 0;
+    }
+
+    .container img.top-img {
+      width: 100px;
+      margin-bottom: 20px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    h1 {
+      font-size: 2.2em;
+      margin-bottom: 30px;
+      font-weight: 600;
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    .support-card {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 15px;
+      padding: 15px 20px;
+      margin: 15px 0;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .support-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .support-card img {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      flex-shrink: 0;
+    }
+
+    .support-text {
+      text-align: left;
+    }
+
+    .support-text h2 {
+      font-size: 1.3em;
+      margin: 0;
+      font-weight: 600;
+    }
+
+    .support-text p {
+      margin: 5px 0 0;
+      font-weight: 300;
+      font-size: 1em;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <img src="support.png" alt="Supporto Aura" class="top-img" />
+    <h1>Il tuo supporto Aura, 7/24</h1>
+
+    <div class="support-card" onclick="location.href='reset.html'">
+      <img src="reset.png" alt="Reset Password" />
+      <div class="support-text">
+        <h2>Hai dimenticato la password del tuo account Aura?</h2>
+        <p>Clicca qui per resettare</p>
+      </div>
+    </div>
+
+    <div class="support-card" onclick="location.href='lockedaccountcauses.html'">
+      <img src="banned.png" alt="Account Disabilitato" />
+      <div class="support-text">
+        <h2>Il tuo account è stato disabilitato?</h2>
+        <p>Clicca per scoprire le cause</p>
+      </div>
+    </div>
+
+    <div class="support-card" onclick="location.href='bannedfromauracommunity.html'">
+      <img src="banned.png" alt="Bannato" />
+      <div class="support-text">
+        <h2>Bannato da Aura Community?</h2>
+        <p>Clicca per scoprire le cause</p>
+      </div>
+    </div>
+
+    <div class="support-card" onclick="location.href='https://privacy.aurastudioitalia.it'">
+      <img src="privacy.png" alt="Privacy" />
+      <div class="support-text">
+        <h2>La tua privacy è importante</h2>
+        <p>Clicca qui per scoprire di più</p>
+      </div>
+    </div>
+
+    <div class="support-card" onclick="location.href='INSERISCI-LINK-DIRETTO'">
+      <img src="contact.png" alt="Contattaci" />
+      <div class="support-text">
+        <h2>Contattaci direttamente</h2>
+        <p>Non hai trovato ciò che cercavi? Contattaci per avere supporto personalizzato</p>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
