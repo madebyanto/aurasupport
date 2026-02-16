@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura/Support</title>
+    <link rel="icon" type="image/png" href="images/aura.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <style>
+        :root {
+            /* Tema dinamico coerente con il sito principale */
+            --bg-gradient: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+            --glass-bg: rgba(255, 255, 255, 0.6);
+            --text-main: #2d3436;
+            --text-muted: #636e72;
+            --accent: #F05BFF;
+            --card-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
+            --popup-bg: rgba(255, 255, 255, 0.9);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-gradient: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+                --glass-bg: rgba(255, 255, 255, 0.05);
+                --text-main: #ffffff;
+                --text-muted: #b2bec3;
+                --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+                --popup-bg: rgba(20, 20, 35, 0.95);
+            }
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            margin-top: 40px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        header img.top-img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+            border-radius: 100%;
+            filter: drop-shadow(0 10px 15px rgba(240, 91, 255, 0.3));
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .highlight {
+            color: var(--accent);
+        }
+
+        /* Support Cards Grid */
+        .grid-support {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        .support-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--card-shadow);
+        }
+
+        .support-card:hover {
+            transform: scale(1.02);
+            background: rgba(240, 91, 255, 0.08);
+            border-color: var(--accent);
+        }
+
+        .support-card img {
+            width: 55px;
+            height: 55px;
+            border-radius: 15px;
+            object-fit: cover;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .support-text h2 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .support-text p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Contattaci Card - Special Style */
+        .contact-trigger {
+            margin-top: 30px;
+            background: linear-gradient(90deg, rgba(240, 91, 255, 0.1), transparent);
+            border: 2px dashed var(--accent);
+        }
+
+        /* Popup Overlay */
+        .popup-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(8px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .popup-content {
+            background: var(--popup-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 30px;
+            text-align: center;
+            position: relative;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .popup-header h3 {
+            margin-bottom: 25px;
+            font-size: 1.4rem;
+        }
+
+        .contact-options {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .contact-btn {
+            flex: 1;
+            padding: 20px;
+            background: var(--glass-bg);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            cursor: pointer;
+            transition: 0.3s;
+            text-decoration: none;
+            color: var(--text-main);
+        }
+
+        .contact-btn:hover {
+            background: var(--accent);
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        .contact-btn i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .close-popup {
+            position: absolute;
+            top: 15px; right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0.5;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; } to { opacity: 1; }
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 1.5rem; }
+            .support-card { padding: 15px; }
+            .support-card img { width: 45px; height: 45px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <img src="images/aura.jpg" alt="Aura Logo" class="top-img">
+            <h1>Come possiamo <span class="highlight">aiutarti</span>?<br>Supporto Aura 24/7</h1>
+        </header>
+
+        <div class="grid-support">
+            <div class="support-card" onclick="location.href='pages/reset.html'">
+                <img src="images/svg/key.svg" alt="Reset">
+                <div class="support-text">
+                    <h2>Recupero Password</h2>
+                    <p>Hai dimenticato le credenziali del tuo Account Aura?</p>
+                </div>
+            </div>
+
+            <div class="support-card" onclick="location.href='pages/banned-acc.html'">
+                <img src="images/svg/banned.svg" alt="Banned">
+                <div class="support-text">
+                    <h2>Account Disabilitato</h2>
+                    <p>Scopri perché il tuo profilo non è più accessibile.</p>
+                </div>
+            </div>
+
+            <div class="support-card" onclick="location.href='pages/banned-comm.html'">
+                <img src="images/svg/banned.svg" alt="Ban Community">
+                <div class="support-text">
+                    <h2>Ban dalla Community</h2>
+                    <p>Cosa fare se sei stato rimosso dai gruppi WhatsApp/Telegram.</p>
+                </div>
+            </div>
+
+            <div class="support-card" onclick="location.href='https://privacy.aurastudioitalia.it'">
+                <img src="images/svg/privacy.svg" alt="Privacy">
+                <div class="support-text">
+                    <h2>Centro Privacy</h2>
+                    <p>Gestione dei dati e termini di servizio.</p>
+                </div>
+            </div>
+
+            <div class="support-card contact-trigger" onclick="openPopup()">
+                <img src="images/svg/contact.svg" alt="Contatto Diretto">
+                <div class="support-text">
+                    <h2>Supporto Diretto</h2>
+                    <p>Parla con un membro del team Aura.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup-overlay" id="contactPopup">
+        <div class="popup-content">
+            <span class="close-popup" onclick="closePopup()">&times;</span>
+            <div class="popup-header">
+                <h3>Scegli come contattarci</h3>
+            </div>
+            <div class="contact-options">
+                <a href="mailto:support@aurastudioitalia.it" class="contact-btn">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>Email</span>
+                </a>
+                <a href="https://wa.me/13177699431" target="_blank" class="contact-btn">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <span>WhatsApp</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openPopup() {
+            const popup = document.getElementById('contactPopup');
+            popup.style.display = 'flex';
+        }
+
+        function closePopup() {
+            const popup = document.getElementById('contactPopup');
+            popup.style.display = 'none';
+        }
+
+        // Chiudi popup cliccando fuori dal contenuto
+        window.onclick = function(event) {
+            const popup = document.getElementById('contactPopup');
+            if (event.target == popup) {
+                closePopup();
+            }
+        }
+    </script>
+
+</body>
+</html>
